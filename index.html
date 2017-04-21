@@ -5,12 +5,31 @@
     	#countdown_box {
 			font-size:436px;
             text-align:center;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            cursor:pointer;
 		}
+        .arrow_button {
+        	font-size:40px;
+        }
+       
+        
+        
     </style>
 </head>
 <body>
 
-	<div id="countdown_box"></div>
+	<div onClick="countdown_start()" id="countdown_box"></div>
+	<span>
+    	<center>
+          <input type="button" id="button_left" value="←" class="arrow_button"> 
+          <input type="button" id="button_right" value="→" class="arrow_button"> 
+          <input type="button" id="button_up" value="↑" class="arrow_button"> 
+          <input type="button" id="button_down" value="↓" class="arrow_button"> 
+        </center>
+    </span>
 
 	<script>
 		var countdown_timer = 3;
@@ -45,9 +64,10 @@
 
             } else {
 
-              countdown_timeout = setTimeout("countdown()",1000);
-              countdown_timer--;
-              countdown_box.innerHTML = countdown_timer;
+				window.clearTimeout(countdown_timeout);
+				countdown_timeout = setTimeout("countdown()",1000);
+              	countdown_timer--;
+              	countdown_box.innerHTML = countdown_timer;
           	}
            
         }
