@@ -13,6 +13,8 @@
 		}
         .arrow_button {
         	font-size:40px;
+            cursor:pointer;
+            border:none;
         }
        
         
@@ -24,10 +26,10 @@
 	<div onClick="countdown_start()" id="countdown_box"></div>
 	<span>
     	<center>
-          <input type="button" id="button_left" value="←" class="arrow_button"> 
-          <input type="button" id="button_right" value="→" class="arrow_button"> 
-          <input type="button" id="button_up" value="↑" class="arrow_button"> 
-          <input type="button" id="button_down" value="↓" class="arrow_button"> 
+          <input type="button" id="button_left" value="←" class="arrow_button" onClick="setChoice(this.id)"> 
+          <input type="button" id="button_right" value="→" class="arrow_button" onClick="setChoice(this.id)"> 
+          <input type="button" id="button_up" value="↑" class="arrow_button" onClick="setChoice(this.id)"> 
+          <input type="button" id="button_down" value="↓" class="arrow_button" onClick="setChoice(this.id)"> 
         </center>
     </span>
 
@@ -35,6 +37,17 @@
 		var countdown_timer = 3;
         var countdown_timeout;
       	var countdown_box = document.getElementById("countdown_box");
+        
+        
+        
+        function setChoice(item) {
+        	document.getElementsByClassName("arrow_button").border = "";
+	        document.getElementById(item).border = "thick solid #000000";
+        }
+        
+        
+        
+        
         
 		function rand_num() {
     		return Math.floor((Math.random() * 4) + 1);
